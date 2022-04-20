@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="javascript.js" defer></script>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+    <header>
+        <h1 style="color: black; text-align: center;">Tic-Tac-Toe!</h1>
+    </header>
+    <div class="content">
+        <div class="board">
+            <div class="row">
+                <div class="square" data-position="0"></div>
+                <div class="square" data-position="1"></div>
+                <div class="square" data-position="2"></div>
+            </div>
+            <div class="row">
+                <div class="square" data-position="3"></div>
+                <div class="square" data-position="4"></div>
+                <div class="square" data-position="5"></div>
+            </div>
+            <div class="row">
+                <div class="square" data-position="6"></div>
+                <div class="square" data-position="7"></div>
+                <div class="square" data-position="8"></div>
+            </div>
+        </div>
+        <div class="players">
+            <div>
+                <input type="text" id="player1" placeholder="Player 1">
+                <button class="player1"><img src="img/check-outline.png" alt=""></button>
+            </div>
+            <div>
+                <input type="text" id="player2" placeholder="Player 2" style="text-align: right;">
+                <button class="player2"><img src="img/check-outline.png" alt=""></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
