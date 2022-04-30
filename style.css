@@ -59,6 +59,13 @@ input, p{
     font-size: 4rem;
     background-color: white;
 }
+
+.locked {
+    border: none;
+    font-size: 2rem;
+    width: auto;
+}
+
 @keyframes append-animate {
 	from {
 		transform: scale(0);
