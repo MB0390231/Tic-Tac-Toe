@@ -23,7 +23,7 @@ const game = (() => {
                 for (let r=0; r<3;r++) {
                     if (jsBoard[r][c] == letter ) {
                         count++;
-                    } 
+                    }
                 }
                 if (count==3) {return true}
             }
@@ -44,7 +44,7 @@ const game = (() => {
             for (let c=0; c<3;c++) {
                 if (jsBoard[r][c] == '') {
                     return false
-                } 
+                }
             }
         }
         return true
@@ -61,26 +61,34 @@ const game = (() => {
         }
         return
     };
-    return {checkWin,play,reset,tie}
+    const getMoves = (board) => {
+        //need a way to return rows and columns in the board that are free
+        let moves = [];
+        for (let r=0;r<3;r++) {
+            for (let c=0;c<3;c++) {
+                if (board[r][c]=="") {moves.push([r,c])}
+            };
+        };
+        return moves
+    };
+    return {checkWin,play,reset,tie,getMoves}
 })();
-
-
 
 // function minimax(board, depth, isMaximizingPlayer):
 
 //     if current board state is a terminal state :
 //         return value of the board
-    
+
 //     if isMaximizingPlayer :
-//         bestVal = -INFINITY 
+//         bestVal = -INFINITY
 //         for each move in board :
 //             value = minimax(board, depth+1, false)
-//             bestVal = max( bestVal, value) 
+//             bestVal = max( bestVal, value)
 //         return bestVal
 
 //     else :
-//         bestVal = +INFINITY 
+//         bestVal = +INFINITY
 //         for each move in board :
 //             value = minimax(board, depth+1, true)
-//             bestVal = min( bestVal, value) 
-//         return bestVal 
+//             bestVal = min( bestVal, value)
+//         return bestVal
