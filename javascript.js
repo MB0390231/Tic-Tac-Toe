@@ -1,4 +1,4 @@
-const gameboard = () => {
+const gameboard = (() => {
   var board = [
     ["", "", ""],
     ["", "", ""],
@@ -8,10 +8,10 @@ const gameboard = () => {
 
   const bindEvents = () => {};
   const init = () => {
-    this.resetBoard();
-    this.cacheDom();
-    this.bindEvents();
-    this.renderBoard();
+    resetBoard();
+    cacheDom();
+    bindEvents();
+    renderBoard();
   };
   const play = (row, column, letter) => {
     //check positions availability
@@ -27,10 +27,15 @@ const gameboard = () => {
     //render the board onto the page
   };
   const resetBoard = () => {
-    //reset board
+    //reset the board array to empty srings
+    board = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
   };
-  return { play, resetBoard };
-};
+  return { init, play, resetBoard };
+})();
 
 const playerFactory = (name, letter) => {
   var name = name;
@@ -48,27 +53,31 @@ const playerFactory = (name, letter) => {
 };
 
 const ticTacToe = (() => {
-  var gameboard = gameboard;
-
   const init = () => {
     cacheDom();
+    if (this.player1 === "" || this.player2 === "") {
+      alert("Please enter player names");
+      return;
+    } else {
+      this.player1 = playerFactory(this.player1, "X");
+      this.player2 = playerFactory(this.player2, "O");
+      this.gameboard = gameboard.init();
+    }
     bindEvents();
   };
 
   const cacheDom = () => {
     this.player1 = document.querySelector("#player1").value;
     this.player2 = document.querySelector("#player2").value;
-    this.ready = document.querySelector(".ready");
+    console.log(
+      `Player 1: ${this.player1} created\Player : ${this.player2} created`
+    );
     this.reset = document.querySelector(".reset");
   };
   const bindEvents = () => {
-    this.ready.addEventListener("click", this.startnewGame);
     this.reset.addEventListener("click", this.resetGame);
   };
 
-  const startNewGame = () => {
-    gameboard.init();
-  };
   const chooseFirstTurn = () => {
     //return n where 0 < n < 1
     // if n <= .5 then its player1 turn toggle player turn
@@ -78,4 +87,6 @@ const ticTacToe = (() => {
   return { init };
 })();
 
-ticTacToe.init();
+document.querySelector(".ready").addEventListener("click", () => {
+  ticTacToe.init();
+});
